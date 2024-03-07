@@ -3,6 +3,7 @@ package com.example.service01.product;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +19,7 @@ public class Product {
     private Double price_lak;
     private Integer Stock;
     private LocalDateTime createdAt;
+
     public Product() {
     }
 
@@ -27,6 +29,12 @@ public class Product {
         this.price_usd = price_usd;
         Stock = stock;
         this.createdAt = LocalDateTime.now();
+    }
+
+    @PrePersist
+    public void calculatePrices() {
+        this.price_thb = this.price_usd * 32.5;
+        this.price_lak = this.price_usd * 8000;
     }
 
     public Integer getId() {
