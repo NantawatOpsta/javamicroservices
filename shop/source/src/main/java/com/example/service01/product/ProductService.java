@@ -35,13 +35,4 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-//    public ProductDto updateProduct(Integer id, ProductDto productDto) {
-//        Product product = productMapper.toProduct(productDto);
-//        Product updatedProduct = productRepository.update(id, product);
-//        return productMapper.toProductDto(updatedProduct);
-//    }
-//
-//    public void deleteProduct(Integer id) {
-//        productRepository.delete(id);
-//    }
 }
