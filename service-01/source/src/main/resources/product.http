@@ -1,0 +1,16 @@
+### Get Product
+GET http://localhost:8080/api/products
+Accept: application/json
+
+
+### Create Product
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+    "name": "Product {{$random.integer()}}",
+    "description": "Product Description",
+    "price_usd": 100,
+    "stock": {{$random.integer()}}
+}
+###

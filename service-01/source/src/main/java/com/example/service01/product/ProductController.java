@@ -1,7 +1,7 @@
 package com.example.service01.product;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -13,24 +13,19 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/products")
+    @GetMapping("/api/products")
     public List<ProductDto> getProducts() {
         return productService.getProducts();
     }
 
-    public ProductDto createProduct(ProductDto productDto) {
+    @PostMapping("/api/products")
+    public ProductDto createProduct(@RequestBody ProductDto productDto) {
         return productService.createProduct(productDto);
     }
 
-    public ProductDto getProduct(Integer id) {
+    @GetMapping("/api/products/{id}")
+    public ProductDto getProduct(@PathVariable Integer id) {
         return productService.getProduct(id);
     }
 
-    public ProductDto updateProduct(Integer id, ProductDto productDto) {
-        return productService.updateProduct(id, productDto);
-    }
-
-    public void deleteProduct(Integer id) {
-        productService.deleteProduct(id);
-    }
 }

@@ -24,8 +24,8 @@ public class ProductService {
     }
 
     public ProductDto getProduct(Integer id) {
-        Optional<Product> product = productRepository.findById(id);
-        return productMapper.toProductDto(product).orElse(null);
+        Product product = productRepository.findById(id).orElse(new Product());
+        return productMapper.toProductDto(product);
     }
 
     public List<ProductDto> getProducts() {
@@ -35,13 +35,13 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public ProductDto updateProduct(Integer id, ProductDto productDto) {
-        Product product = productMapper.toProduct(productDto);
-        Product updatedProduct = productRepository.update(id, product);
-        return productMapper.toProductDto(updatedProduct);
-    }
-
-    public void deleteProduct(Integer id) {
-        productRepository.delete(id);
-    }
+//    public ProductDto updateProduct(Integer id, ProductDto productDto) {
+//        Product product = productMapper.toProduct(productDto);
+//        Product updatedProduct = productRepository.update(id, product);
+//        return productMapper.toProductDto(updatedProduct);
+//    }
+//
+//    public void deleteProduct(Integer id) {
+//        productRepository.delete(id);
+//    }
 }

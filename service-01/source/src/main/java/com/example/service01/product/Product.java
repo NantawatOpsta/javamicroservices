@@ -13,16 +13,18 @@ public class Product {
     private Integer id;
     private String name;
     private String description;
-    private Double price;
+    private Double price_usd;
+    private Double price_thb;
+    private Double price_lak;
     private Integer Stock;
     private LocalDateTime createdAt;
     public Product() {
     }
 
-    public Product(String name, String description, Double price, Integer stock) {
+    public Product(String name, String description, Double price_usd, Integer stock) {
         this.name = name;
         this.description = description;
-        this.price = price;
+        this.price_usd = price_usd;
         Stock = stock;
         this.createdAt = LocalDateTime.now();
     }
@@ -47,12 +49,28 @@ public class Product {
         this.description = description;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getPrice_usd() {
+        return price_usd;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setPrice_usd(Double price_usd) {
+        this.price_usd = price_usd;
+    }
+
+    public Double getPrice_thb() {
+        return price_thb;
+    }
+
+    public void setPrice_thb(Double price_thb) {
+        this.price_thb = price_thb;
+    }
+
+    public Double getPrice_lak() {
+        return price_lak;
+    }
+
+    public void setPrice_lak(Double price_lak) {
+        this.price_lak = price_lak;
     }
 
     public Integer getStock() {
