@@ -19,8 +19,21 @@ public class ProductService {
 
     public ProductDto createProduct(ProductDto productDto) {
         Product product = productMapper.toProduct(productDto);
+
+        double price_usd = product.getPrice_usd();
+        product.setPrice_thb(calculatePriceBaht(price_usd));
+        product.setPrice_lak(calculatePriceLak(price_usd));
+
         Product savedProduct = productRepository.save(product);
         return productMapper.toProductDto(savedProduct);
+    }
+
+    public double calculatePriceBaht(double price_usd) {
+        return price_usd * 32.5;
+    }
+
+    public double calculatePriceLak(double price_usd) {
+        return price_usd * 8000;
     }
 
     public ProductDto getProduct(Integer id) {

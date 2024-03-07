@@ -31,11 +31,11 @@ public class Product {
         this.createdAt = LocalDateTime.now();
     }
 
-    @PrePersist
-    public void calculatePrices() {
-        this.price_thb = this.price_usd * 32.5;
-        this.price_lak = this.price_usd * 8000;
-    }
+//    @PrePersist
+//    public void calculatePrices() {
+//        this.price_thb = this.price_usd * 32.5;
+//        this.price_lak = this.price_usd * 8000;
+//    }
 
     public Integer getId() {
         return id;

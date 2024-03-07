@@ -10,7 +10,7 @@ Content-Type: application/json
 {
     "name": "Product {{$random.integer()}}",
     "description": "Product Description",
-    "price_usd": 100,
+    "price_usd": {{$random.integer()}},
     "stock": {{$random.integer()}}
 }
 ###

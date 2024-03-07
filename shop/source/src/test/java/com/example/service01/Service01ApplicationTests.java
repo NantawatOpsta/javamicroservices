@@ -28,16 +28,40 @@ class Service01ApplicationTests {
 	}
 
 	@Test
-	public void testCreateProduct() {
-		ProductDto productDto = new ProductDto(1, "Product 1", "Description 1", 10.0, 100);
+	public void testProduct() {
+		// Arrange
+		ProductDto productDto = new ProductDto(1, "Product 1", "Description 1", 10.0, 325.0, 80000.0 , 1);
 		Product product = new Product("Product 1", "Description 1", 10.0, 100);
 		product.setCreatedAt(LocalDateTime.now());
 		Mockito.when(productMapper.toProduct(productDto)).thenReturn(product);
 		Mockito.when(productRepository.save(product)).thenReturn(product);
 		Mockito.when(productMapper.toProductDto(product)).thenReturn(productDto);
 
+		// Act
 		ProductDto result = productService.createProduct(productDto);
+
+		// Assert
 		Assertions.assertEquals(productDto, result);
+	}
+
+	@Test
+	public void should_calculate_price_baht_correctly() {
+		double price_usd = 10.0;
+		double expectedPriceBaht = 325.0;
+
+		double result = productService.calculatePriceBaht(price_usd);
+
+		Assertions.assertEquals(expectedPriceBaht, result);
+	}
+
+	@Test
+	public void should_calculate_price_lak_correctly() {
+		double price_usd = 10.0;
+		double expectedPriceLak = 80000.0;
+
+		double result = productService.calculatePriceLak(price_usd);
+
+		Assertions.assertEquals(expectedPriceLak, result);
 	}
 
 }
