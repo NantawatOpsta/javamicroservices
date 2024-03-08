@@ -1,9 +1,10 @@
 package com.example.service01.product;
 
+import com.example.service01.product.DTO.ProductDto;
+import com.example.service01.product.DTO.ProductUpdateDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,8 +18,8 @@ public class ProductService {
         this.productMapper = productMapper;
     }
 
-    public ProductDto createProduct(ProductDto productDto) {
-        Product product = productMapper.toProduct(productDto);
+    public ProductDto createProduct(ProductUpdateDto productUpdateDto) {
+        Product product = productMapper.toProductUpdate(productUpdateDto);
 
         double price_usd = product.getPrice_usd();
         product.setPrice_thb(calculatePriceBaht(price_usd));

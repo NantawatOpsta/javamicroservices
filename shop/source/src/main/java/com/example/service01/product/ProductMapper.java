@@ -1,13 +1,13 @@
 package com.example.service01.product;
 
+import com.example.service01.product.DTO.ProductDto;
+import com.example.service01.product.DTO.ProductUpdateDto;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class ProductMapper {
 
-    public Product toProduct(ProductDto productDto) {
+    public Product toProductUpdate(ProductUpdateDto productDto) {
         return new Product(
                 productDto.name(),
                 productDto.description(),

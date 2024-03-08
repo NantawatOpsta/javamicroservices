@@ -1,4 +1,4 @@
-package com.example.service01.product;
+package com.example.service01.product.DTO;
 
 public record ProductDto(
         Integer id,

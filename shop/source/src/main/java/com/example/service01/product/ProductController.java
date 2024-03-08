@@ -1,5 +1,7 @@
 package com.example.service01.product;
 
+import com.example.service01.product.DTO.ProductDto;
+import com.example.service01.product.DTO.ProductUpdateDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class ProductController {
     }
 
     @PostMapping("/api/products")
-    public ProductDto createProduct(@RequestBody ProductDto productDto) {
-        return productService.createProduct(productDto);
+    public ProductDto createProduct(@RequestBody ProductUpdateDto productUpdateDto) {
+        return productService.createProduct(productUpdateDto);
     }
 
     @GetMapping("/api/products/{id}")
