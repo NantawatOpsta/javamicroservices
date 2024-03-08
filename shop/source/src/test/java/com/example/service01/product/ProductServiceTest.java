@@ -32,7 +32,17 @@ class ProductServiceTest {
     public void testProduct() {
         // Arrange
         ProductUpdateDto productUpdateDto = new ProductUpdateDto(1, "Product 1", "Description 1", 10.0, 10);
-        ProductDto productDto = new ProductDto(1, "Product 1", "Description 1", 10.0, 325.0, 80000.0, 10);
+        ProductDto productDto = new ProductDto(
+                1,
+                "Product 1",
+                "Description 1",
+                10.0,
+                325.0,
+                80000.0,
+                10,
+                LocalDateTime.now(),
+                LocalDateTime.now()
+        );
         Product product = new Product("Product 1", "Description 1", 10.0, 100);
         product.setCreatedAt(LocalDateTime.now());
         Mockito.when(productMapper.toProductUpdate(productUpdateDto)).thenReturn(product);
