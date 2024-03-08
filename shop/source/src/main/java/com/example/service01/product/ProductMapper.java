@@ -24,7 +24,9 @@ public class ProductMapper {
                 product.getPrice_usd(),
                 product.getPrice_thb(),
                 product.getPrice_lak(),
-                product.getStock()
+                product.getStock(),
+                product.getCreatedAt(),
+                product.getUpdatedAt()
         );
     }
 

@@ -1,5 +1,7 @@
 package com.example.service01.product.DTO;
 
+import java.time.LocalDateTime;
+
 public record ProductDto(
         Integer id,
         String name,
@@ -7,6 +9,9 @@ public record ProductDto(
         Double price_usd,
         Double price_thb,
         Double price_lak,
-        Integer stock
+        Integer stock,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
+
 ) {
 }

@@ -7,22 +7,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ProductController {
+public class ProductPublicController {
 
     private final ProductService productService;
 
-    public ProductController(ProductService productService) {
+    public ProductPublicController(ProductService productService) {
         this.productService = productService;
     }
 
     @GetMapping("/api/products")
     public List<ProductDto> getProducts() {
         return productService.getProducts();
-    }
-
-    @PostMapping("/api/products")
-    public ProductDto createProduct(@RequestBody ProductUpdateDto productUpdateDto) {
-        return productService.createProduct(productUpdateDto);
     }
 
     @GetMapping("/api/products/{id}")

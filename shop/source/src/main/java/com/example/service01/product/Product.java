@@ -17,8 +17,9 @@ public class Product {
     private Double price_usd;
     private Double price_thb;
     private Double price_lak;
-    private Integer Stock;
+    private Integer stock;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Product() {
     }
@@ -27,15 +28,14 @@ public class Product {
         this.name = name;
         this.description = description;
         this.price_usd = price_usd;
-        Stock = stock;
+        this.stock = stock;
         this.createdAt = LocalDateTime.now();
     }
 
-//    @PrePersist
-//    public void calculatePrices() {
-//        this.price_thb = this.price_usd * 32.5;
-//        this.price_lak = this.price_usd * 8000;
-//    }
+    @PrePersist
+    public void prePersist() {
+        this.updatedAt = LocalDateTime.now();
+    }
 
     public Integer getId() {
         return id;
@@ -82,11 +82,11 @@ public class Product {
     }
 
     public Integer getStock() {
-        return Stock;
+        return stock;
     }
 
     public void setStock(Integer stock) {
-        Stock = stock;
+        this.stock = stock;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -95,5 +95,13 @@ public class Product {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

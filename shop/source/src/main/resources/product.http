@@ -8,7 +8,7 @@ POST http://localhost:8080/api/products
 Content-Type: application/json
 
 {
-    "name": "Product {{$random.integer()}}",
+    "name": "Product {{$random.uuid}}",
     "description": "Product Description",
     "price_usd": {{$random.integer()}},
     "stock": {{$random.integer()}}
