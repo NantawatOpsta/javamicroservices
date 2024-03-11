@@ -2,6 +2,9 @@
 GET http://localhost:8080/api/products
 Accept: application/json
 
+### Get Partner Product
+GET http://localhost:8080/api/partner/products
+Accept: application/json
 
 ### Create Product
 POST http://localhost:8080/api/products

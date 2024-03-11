@@ -1,8 +1,9 @@
 package com.example.service01.product;
 
 import com.example.service01.product.DTO.ProductDto;
-import com.example.service01.product.DTO.ProductUpdateDto;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -11,8 +12,17 @@ public class ProductPublicController {
 
     private final ProductService productService;
 
-    public ProductPublicController(ProductService productService) {
+    private final RestTemplate restTemplate;
+
+    public ProductPublicController(ProductService productService, RestTemplate restTemplate) {
         this.productService = productService;
+        this.restTemplate = restTemplate;
+    }
+
+    @Cacheable(value = "partnerProduct", key = "#root.methodName")
+    @GetMapping("/api/partner/products")
+    public Object getPartnerProducts() {
+        return restTemplate.getForObject("https://api.publicapis.org/entries", Object.class);
     }
 
     @GetMapping("/api/products")
