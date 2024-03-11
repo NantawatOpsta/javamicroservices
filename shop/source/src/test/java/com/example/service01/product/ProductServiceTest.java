@@ -58,30 +58,5 @@ class ProductServiceTest {
         Assertions.assertEquals(productUpdateDto.price_usd(), result.price_usd());
         Assertions.assertEquals(productUpdateDto.stock(), result.stock());
     }
-    @Test
-    public void should_calculate_price_baht_correctly() {
-        // Arrange
-        double price_usd = 10.0;
-        double expectedPriceBaht = 325.0;
-
-        // Act
-        double result = productService.calculatePriceBaht(price_usd);
-
-        // Assert
-        Assertions.assertEquals(expectedPriceBaht, result);
-    }
-
-    @Test
-    public void should_calculate_price_lak_correctly() {
-        // Arrange
-        double price_usd = 10.0;
-        double expectedPriceLak = 80000.0;
-
-        // Act
-        double result = productService.calculatePriceLak(price_usd);
-
-        // Assert
-        Assertions.assertEquals(expectedPriceLak, result);
-    }
 
 }

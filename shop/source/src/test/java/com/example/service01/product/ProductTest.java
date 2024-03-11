@@ -17,8 +17,13 @@ class ProductTest {
 
     @Test
     void testCreateProduct() {
+        // Arrange
         Product product = new Product("product1", "description1", 100.0, 10);
+
+        // Act
         productRepository.save(product);
+
+        // Assert
         assertNotNull(product.getId());
         assertNotNull(product.getCreatedAt());
         assertNotNull(product.getUpdatedAt());

@@ -2,6 +2,7 @@ package com.example.service01.product;
 
 import com.example.service01.product.DTO.ProductDto;
 import com.example.service01.product.DTO.ProductUpdateDto;
+import com.example.service01.usecase.Exchange;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,19 +23,12 @@ public class ProductService {
         Product product = productMapper.toProductUpdate(productUpdateDto);
 
         double price_usd = product.getPrice_usd();
-        product.setPrice_thb(calculatePriceBaht(price_usd));
-        product.setPrice_lak(calculatePriceLak(price_usd));
+        var exchange = new Exchange();
+        product.setPrice_thb(exchange.calculatePriceBaht(price_usd));
+        product.setPrice_lak(exchange.calculatePriceLak(price_usd));
 
         Product savedProduct = productRepository.save(product);
         return productMapper.toProductDto(savedProduct);
-    }
-
-    public double calculatePriceBaht(double price_usd) {
-        return price_usd * 32.5;
-    }
-
-    public double calculatePriceLak(double price_usd) {
-        return price_usd * 8000;
     }
 
     public ProductDto getProduct(Integer id) {
